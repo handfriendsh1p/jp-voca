@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,6 +202,7 @@
     execute();
 
     let buttonState = 0;
+    let press = 0;
     const input = document.getElementById('input');
     const button = document.getElementById('button');
     const check = () => {
@@ -221,13 +222,19 @@
             input.value = '';
             execute();
             button.innerText = '확인';
-            buttonState = 0;
+            buttonState = 0
         }
     }
 
     button.addEventListener('click', check);
     input.addEventListener('keydown', e => {
-        if (e.key == 'Enter') check();
+        if (!event.isComposing && e.key == 'Enter' && press == 0) {
+            check();
+            press = 1;
+        }
+    });
+    input.addEventListener('keyup', e => {
+        if (!event.isComposing && e.key == 'Enter') press = 0;
     });
 </script>
 </html>
