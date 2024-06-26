@@ -327,7 +327,7 @@
         if (buttonState == 0) {
             const res = input.value.replaceAll(' ', '')
             if (res != '') {
-                if (res == wordlist[index][1].replaceAll(' ', '') {
+                if (res == wordlist[index][1].replaceAll(' ', '')) {
                     mondai.innerText = '맞혔습니다!';
                 } else {
                     mondai.innerText = `틀렸습니다. ${wordlist[index][0]}는 "${wordlist[index][1]}"(이)라는 뜻입니다.`;
